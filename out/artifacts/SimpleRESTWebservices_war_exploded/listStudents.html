@@ -17,14 +17,13 @@
 </body>
 
 <script>
-    console.log("hello data!!!");
-    var appendingStudentsList = document.getElementById("listStudentsUI");
+
+    var appendingStudentsList = document.getElementById("listStudentsUI"); //unordered list
 
     //get request from the web service /listStudents java
     $.getJSON('/MyWebServices/api/restServices/listStudents', function(data) {
         console.log(data);
         for (i=0; i< data.length; i++) {
-            //var li = $('<li>' + data[i].adminNum + '</li>');
             var li = document.createElement("li");
             li.appendChild(document.createTextNode("admin num: " + data[i].adminNum + " name: " + data[i].name));
             var button = document.createElement("button");
@@ -34,15 +33,7 @@
             li.appendChild(button);
             button.setAttribute("id", data[i].adminNum);
             button.setAttribute("name", data[i].name);
-            console.log(button);
             appendingStudentsList.appendChild(li);
-            console.log(li);
-            /* li.setAttribute("id", data[i].adminNum);
-            li.setAttribute("name", data[i].adminNum);
-            a.href = "myWebServices/api/restServices/listStudentsDelete";
-            a.href = "api/restServices/deletingStudent"; */
-            //$("#listStudentsUI").append('<li>' + data[i].adminNum + '</li>');
-            //$("#listStudentsUI").append(li);
         }
 
         function redirectToDeleted() {
