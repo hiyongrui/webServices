@@ -15,7 +15,8 @@ public class MyRestfulService extends Application {
 
     // http://localhost:8080/MyWebServices/index.html
     // http://localhost:8080/MyWebServices/api/restServices/listStudents
-
+    // @Produces = MIME media types or representations a resource can produce and send back to the client
+    // @Consumes = MIME media types of representations a resource can accept, or consume, from the client
     @GET
     @Path("/plain") //http://localhost:8080/MyWebServices/api/restServices/plain
     @Produces(MediaType.TEXT_PLAIN)
@@ -46,6 +47,7 @@ public class MyRestfulService extends Application {
 	public Response createStudent(@FormParam("adminNum") String adminNum,
 							 @FormParam("name") String name) {
     	return Response.status(200).entity("Admin Num: " + adminNum + " name: " + name).build();
+    	// return a response object 200 = ok success, and the msg of the admin num + name
 	}
 
     @GET
